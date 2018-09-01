@@ -73,11 +73,11 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
-        User userWithOnlyPassword = new User();
-        userWithOnlyPassword.setLogin(user.getLogin());
-        userWithOnlyPassword.setId(user.getId());
+        User userResponse = userService.findByLogin(user.getLogin());
+        userResponse.setPassword(null);
+        userResponse.setMatchingPassword(null);
 
-        return new ResponseEntity<>(userWithOnlyPassword, HttpStatus.OK);
+        return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

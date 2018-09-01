@@ -23,6 +23,10 @@ public class UserService {
         return userDao.findById(id);
     }
 
+    public User findByLogin(String login) {
+        return userDao.findByLogin(login);
+    }
+
     public User registerNewUserAccount(User accountDto) throws UserExistsException {
         if (userExist(accountDto.getLogin())) {
             throw new UserExistsException();
