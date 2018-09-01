@@ -75,6 +75,7 @@ public class UserController {
 
         User userWithOnlyPassword = new User();
         userWithOnlyPassword.setLogin(user.getLogin());
+        userWithOnlyPassword.setLogin(user.getId());
 
         return new ResponseEntity<>(userWithOnlyPassword, HttpStatus.OK);
     }
